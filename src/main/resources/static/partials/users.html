@@ -1,10 +1,38 @@
-<div class="panel-body" ng-controller="usersController as credusrCtrl">
-    <div class="container">
-        <div class="list-group">
-            <div ng-repeat="user in credusrCtrl.users" class="list-group-item">
-                <p>{{user.id}}</p>
-                <p>{{user.email}}</p>
-                <p>{{user.name}}</p>
+<div ng-controller="usersController as credusrCtrl">
+    {{credusrCtrl.found}}
+    <div class="panel panel-default left">
+    <div class="panel-body ">
+        <form class="form-inline">
+            <div class="form-group">
+                <input type="text" class="form-control" id="searchcriteria" ng-model="criteriaText">
+                <select class="form-control" ng-options="criteria as criteria.label for criteria in criterias track by criteria.id" ng-model="selected"></select>
+                <button ng-click="getUsers(criteriaText)" id="searchUser" class="btn btn-info" type="button"><span class="glyphicon glyphicon-search"></span>  Search</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    <div class="maincontent">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Result
+            </div>
+            <div class="panel-body ">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="user in credusrCtrl.users">
+                            <td>{{user.id}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -34,6 +34,11 @@ public class UserDaoImpl implements UserDao {
         entityManager.persist(user);
     }
 
+    @Override
+    public List<User> search(String criteria, String value) {
+        return entityManager.createQuery(String.format("from User where %s = '%s'", criteria, value)).getResultList();
+    }
+
     /**
      * Delete the user from the database.
      */

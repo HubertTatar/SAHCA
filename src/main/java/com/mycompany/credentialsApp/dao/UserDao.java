@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface UserDao {
     void create(User user);
+    List<User> search(String criteria, String value);
     void delete(User user);
     List<User> getAll();
     User getByEmail(String email);

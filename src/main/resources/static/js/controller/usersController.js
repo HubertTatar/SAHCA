@@ -1,9 +1,68 @@
 angular.module('credentialsApp')
-    .constant('userUrl','http://localhost:8080/user')
-    .controller('usersController', function($scope, $http, userUrl){
-        var obj = this;
-        obj.users = [];
-        $http.get(userUrl).success(function(data){
-            obj.users = data;
-        });
+    .controller('usersController', function($scope, $http, config){
+
+        $scope.userUrl = config.backend + 'user';
+
+        var self = this;
+        self.users = [];
+
+        $scope.criterias = [{
+            id: 1,
+            label: 'ID',
+            type: '[object Number]',
+            subItem: { name: 'id' }
+        }, {
+            id: 2,
+            label: 'Name',
+            type: '[object String]',
+            subItem: { name: 'name' }
+        }, {
+            id: 3,
+            label: 'Mail',
+            type: '[object String]',
+            subItem: { name: 'email' }
+        }];
+
+        $scope.selected = $scope.criterias[1];
+
+        //TODO cannot read property 'protocol' of undefined
+        $scope.getUsers = function(criteria){
+            if (verifyCriteria(criteria) && verifyCriteriaType(criteria)) {
+                request(createRequestUrl(criteria))
+            } else {
+                request($scope.userUrl)
+            }
+        }
+
+        ///cars?color=blue;type=sedan
+        ///cars?color=black,blue,red;doors=3,5;type=sedan
+        function createRequestUrl(criteria) {
+            return request($scope.userUrl + '/search?criteria=' + $scope.selected.subItem.name + '&value=' + criteria);
+        }
+
+        function verifyCriteriaType (criteria) {
+            var getType = function (criteria) {
+                return Object.prototype.toString.call(criteria);
+            };
+            return getType(criteria) === $scope.selected.type;
+        }
+
+        function request(url) {
+            $http.get(url).success(function(data){
+                self.users = data;
+            });
+        }
+
+        function verifyCriteria (criteria){
+            return !(isEmpty(criteria) || isBlank(criteria));
+
+        }
+
+        function isEmpty(str) {
+            return (!str || 0 === str.length);
+        }
+
+        function isBlank(str) {
+            return (!str || /^\s*$/.test(str));
+        }
     });

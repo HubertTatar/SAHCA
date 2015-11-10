@@ -17,6 +17,7 @@ import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.WebUtils;
 
@@ -58,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.failureUrl("/auth/login?failed") // default is /login?error
                 .defaultSuccessUrl("/index.html")
                 //.loginProcessingUrl("")
-                .and().logout()
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
                 .and().csrf()
                 .csrfTokenRepository(csrfTokenRepository())
                 .and().addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);

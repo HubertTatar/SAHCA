@@ -11,27 +11,31 @@
 <body>
 <div class="container">
     <div class="card card-container" ng-controller="loginCtrl">
-        {{greeting.id}}
         <form ng-submit="onLogin()" class="form-signin" novalidate>
             <span id="reauth-email" class="reauth-email"></span>
             <input name="username" type="email" id="username" class="form-control" placeholder="Email address" required autofocus>
             <input name="password" type="password" id="password" class="form-control" placeholder="Password" required>
-<!--            <div id="remember" class="checkbox">
+            <div id="remember" class="checkbox">
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
-            </div>-->
+            </div>
             <button id="login" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
         </form><!-- /form -->
-<!--        <a href="#" class="forgot-password">
-            Forgot the password?
-        </a>-->
+        <div>
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+            <a href="#" class="forgot-password right">
+                New user
+            </a>
+        </div>
     </div><!-- /card-container -->
 </div><!-- /container -->
 <script type="application/javascript" src="/webjars/angularjs/1.4.7/angular.js"></script>
-<script type="application/javascript" src="/webjars/angularjs/1.4.7/angular-route.js"></script>
-<script type="application/javascript" src="/webjars/angularjs/1.4.7/angular-resource.js"></script>
+<script type="application/javascript" src="/webjars/angularjs/1.4.7/angular-messages.js"></script>
 <script type="application/javascript" src="/webjars/spring-security-csrf-token-interceptor/0.1.5/src/spring-security-csrf-token-interceptor.js"></script>
 <script type="application/javascript" src="/auth/js/login.js"></script>
+<script type="application/javascript" src="/auth/js/common.js"></script>
 </body>
 </html>

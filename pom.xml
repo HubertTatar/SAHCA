@@ -41,6 +41,11 @@
 		<java.version>1.8</java.version>
 		<ojdbc-version>11.2.0.3</ojdbc-version>
 		<jackson-core-version>2.6.3</jackson-core-version>
+		<angularjs-version>1.4.7</angularjs-version>
+		<bootstrap-version>3.3.5</bootstrap-version>
+		<jquery-version>2.1.4</jquery-version>
+		<purecss-version>0.6.0</purecss-version>
+		<ssci-verion>0.1.5</ssci-verion>
 	</properties>
 
 	<dependencies>
@@ -96,27 +101,27 @@
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
-			<version>2.1.4</version>
+			<version>${jquery-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>angularjs</artifactId>
-			<version>1.4.7</version>
+			<version>${angularjs-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
-			<version>3.3.5</version>
+			<version>${bootstrap-version}</version>
 		</dependency>
         <dependency>
             <groupId>org.webjars.npm</groupId>
             <artifactId>purecss</artifactId>
-            <version>0.6.0</version>
+            <version>${purecss-version}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars.bower</groupId>
             <artifactId>spring-security-csrf-token-interceptor</artifactId>
-            <version>0.1.5</version>
+            <version>${ssci-verion}</version>
         </dependency>
 
 		<dependency>

@@ -28,6 +28,12 @@ public class UserController {
         return userDao.getAll();
     }
 
+    @RequestMapping(value = "/search", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Transactional(readOnly = true)
+    public @ResponseBody List<User> search (@RequestParam("criteria") String criteria, @RequestParam("value") String value) {
+        return userDao.search(criteria, value);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public void createUser(@RequestBody User user) {
