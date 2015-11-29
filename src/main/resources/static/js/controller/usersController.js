@@ -1,7 +1,7 @@
 angular.module('credentialsApp')
     .controller('usersController', function($scope, $http, config){
 
-        $scope.userUrl = config.backend + 'user';
+        $scope.userUrl = config.backend + 'users';
 
         var self = this;
         self.users = [];
