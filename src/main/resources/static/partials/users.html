@@ -1,15 +1,19 @@
 <div ng-controller="usersController as credusrCtrl">
-    {{credusrCtrl.found}}
-    <div class="panel panel-default left">
-    <div class="panel-body ">
-        <form class="form-inline">
-            <div class="form-group">
-                <input type="text" class="form-control" id="searchcriteria" ng-model="criteriaText">
-                <select class="form-control" ng-options="criteria as criteria.label for criteria in criterias track by criteria.id" ng-model="selected"></select>
-                <button ng-click="getUsers(criteriaText)" id="searchUser" class="btn btn-info" type="button"><span class="glyphicon glyphicon-search"></span>  Search</button>
-            </div>
-        </form>
+    <div class="alert alert-danger" ng-show="messages">
+        Error: {{status}} {{messages}}
     </div>
+    http://www.dwmkerr.com/the-only-angularjs-modal-service-youll-ever-need/
+    <div class="panel panel-default left">
+        <div class="panel-body">
+            <form class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="searchcriteria" ng-model="criteriaText">
+                    <select class="form-control" ng-options="criteria as criteria.label for criteria in criterias track by criteria.id" ng-model="selected"></select>
+                    <button ng-click="getUsers(criteriaText)" id="searchUser" class="btn btn-info" type="button"><span class="glyphicon glyphicon-search"></span>  Search</button>
+                </div>
+            </form>
+            <button ng-click="showAddUserDialog()" id="addUserDialog" class="btn btn-info" type="button"><span class="glyphicon glyphicon-plus"></span>  Add</button>
+        </div>
     </div>
     <div class="maincontent">
         <div class="panel panel-default">

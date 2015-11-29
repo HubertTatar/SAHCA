@@ -1,4 +1,4 @@
-angular.module('credentialsApp', ['ngRoute', 'menu'])
+angular.module('credentialsApp', ['ngRoute', 'ngResource', 'menu'])
     .constant('config',{
         'backend': 'http://localhost:8090/'
     })

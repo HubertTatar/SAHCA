@@ -34,6 +34,10 @@ angular.module('credentialsApp')
             }
         }
 
+        $scope.showAddUserDialog = function() {
+            $scope.showModal = true;
+        }
+
         ///cars?color=blue;type=sedan
         ///cars?color=black,blue,red;doors=3,5;type=sedan
         function createRequestUrl(criteria) {
@@ -48,9 +52,14 @@ angular.module('credentialsApp')
         }
 
         function request(url) {
-            $http.get(url).success(function(data){
+            $http.get(url).success(function(data, status) {
                 self.users = data;
-            });
+                $scope.messages = null;
+                $scope.status = null;
+            }).error(function(data, status) {
+                $scope.messages = data || "Request failed";
+                $scope.status = status;
+            })
         }
 
         function verifyCriteria (criteria){

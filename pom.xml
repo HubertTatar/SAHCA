@@ -46,6 +46,7 @@
 		<jquery-version>2.1.4</jquery-version>
 		<purecss-version>0.6.0</purecss-version>
 		<ssci-verion>0.1.5</ssci-verion>
+		<ui-bootstrap-version>0.14.3</ui-bootstrap-version>
 	</properties>
 
 	<dependencies>
@@ -123,6 +124,11 @@
             <artifactId>spring-security-csrf-token-interceptor</artifactId>
             <version>${ssci-verion}</version>
         </dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>angular-ui-bootstrap</artifactId>
+			<version>${ui-bootstrap-version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.hsqldb</groupId>
