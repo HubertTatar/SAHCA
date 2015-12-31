@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/roles")
+@RequestMapping("/groups")
 public class GroupsController {
 
     private static final Logger LOGGER = Logger.getLogger(GroupsController.class);
